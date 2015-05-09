@@ -1,0 +1,16 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h2 class="panel-title large-font">{{ user.firstName }} {{ user.lastName }}</h2>
+	</div>
+	<ul class="list-group">
+		<p ng-repeat="story in user.stories" class="list-group-item">
+			<span>
+			<a ui-sref="story({id: story._id})" class="clickable story-item-title">
+				{{ story.title }}
+			</a>
+			<button class="btn btn-default pull-right btn-xs remove-story" ng-click="removeStory(story)">X</button>
+			</span>
+		</p>
+	</ul>
+</div>
+<button class="btn btn-block btn-warning" ng-click="addStory()">add story</button>

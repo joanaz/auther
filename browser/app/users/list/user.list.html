@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="col-xs-6 col-md-5 col-lg-4">
+		<p>
+			<button ng-click="addUser()" class="btn btn-warning btn-block">
+				<span class="large-font">add user</span>
+			</button>
+		</p>
+		<user-item ng-repeat="user in users" model="user"></user-item>
+	</div>
+	<div class="col-xs-6 col-md-7 col-lg-8">
+		<div class="fixed">
+			<ui-view></ui-view>
+		</div>
+	</div>
+</div>

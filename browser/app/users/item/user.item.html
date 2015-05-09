@@ -1,0 +1,20 @@
+<a ui-sref="users.detail({id: user._id})"
+	ui-sref-active="active"
+	class="list-group-item"
+	ng-if="!user.isDestroyed">
+	<p class="media">
+		<div class="media-left media-middle">
+			<img class="media-object img-circle" ng-src="{{ user.photo }}">
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">
+				<span contenteditable ng-model="name" ng-change="updateName()"></span>
+			</h4>
+			<p><span contenteditable ng-model="user.email" ng-change="save()"></span></p>
+			<h5><span contenteditable ng-model="user.phone" ng-change="save()"></span></h5>
+		</div>
+		<div class="media-right media-middle">
+			<button class="btn btn-default" ng-click="removeUser()">X</button>
+		</div>
+	</p>
+</a>

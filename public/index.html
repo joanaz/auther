@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Auther</title>
+    <base href="/">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <!--external CSS dependencies-->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!--local CSS dependencies-->
+    <link rel="stylesheet" href="/browser/app/main.css" />
+    <link rel="stylesheet" href="/browser/app/users/list/user.list.css" />
+    <link rel="stylesheet" href="/browser/app/users/detail/user.detail.css" />
+
+    <!--external JS dependencies-->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/angular/angular.min.js" type="text/javascript"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <!--local JS dependencies-->
+    <script src="/browser/app/main.js"></script>
+    <script src="/browser/components/navbar/navbar.directive.js"></script>
+    <script src="/browser/components/contenteditable/contenteditable.directive.js"></script>
+    <script src="/browser/app/signup/signup.state.js"></script>
+    <script src="/browser/app/login/login.state.js"></script>
+    <script src="/browser/app/users/user.factory.js"></script>
+    <script src="/browser/app/users/list/user.list.state.js"></script>
+    <script src="/browser/app/users/list/user.list.controller.js"></script>
+    <script src="/browser/app/users/item/user.item.directive.js"></script>
+    <script src="/browser/app/users/item/user.item.controller.js"></script>
+    <script src="/browser/app/users/detail/user.detail.state.js"></script>
+    <script src="/browser/app/users/detail/user.detail.controller.js"></script>
+    <script src="/browser/app/story/story.controller.js"></script>
+    <script src="/browser/app/story/story.state.js"></script>
+    <script src="/browser/app/story/story.factory.js"></script>
+</head>
+<body ng-app="auther">
+	<navbar></navbar>
+    <div class="container">
+        <ui-view></ui-view>
+    </div>
+</body>
+</html>
