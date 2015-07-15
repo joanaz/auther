@@ -3,11 +3,13 @@
 var app = require('express')();
 var path = require('path');
 
-app.use(require('./logging.router'));
+app.use(require('./logging.middleware'));
 
-app.use(require('./statics.router'));
+app.use(require('./sass.middleware'));
 
-app.use(require('./requestState.router'));
+app.use(require('./requestState.middleware'));
+
+app.use(require('./statics.middleware'));
 
 app.use('/api', require('../api'));
 
@@ -16,6 +18,6 @@ app.get('/*', function (req, res) {
 	res.sendFile(index);
 });
 
-app.use(require('./error.router'));
+app.use(require('./error.middleware'));
 
 module.exports = app;

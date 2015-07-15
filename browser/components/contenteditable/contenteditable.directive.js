@@ -1,3 +1,5 @@
+'use strict';
+
 app.directive('contenteditable', function() {
 	return {
 		restrict: 'A',

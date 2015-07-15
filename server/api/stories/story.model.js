@@ -1,18 +1,24 @@
 'use strict'; 
 
 var mongoose = require('mongoose'),
+	shortid = require('shortid'),
 	crypto = require('crypto'),
 	Types = mongoose.Schema.Types;
 
 var db = require('../../db');
 
 var Story = new mongoose.Schema({
+	_id: {
+		type: String,
+		unique: true,
+		default: shortid.generate
+	},
 	__v: {
 		type: Number,
 		select: false
 	},
 	author: {
-		type: Types.ObjectId,
+		type: String,
 		ref: 'User',
 		required: true
 	},

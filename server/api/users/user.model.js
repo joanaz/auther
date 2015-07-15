@@ -1,6 +1,7 @@
 'use strict'; 
 
 var mongoose = require('mongoose'),
+	shortid = require('shortid'),
 	crypto = require('crypto'),
 	_ = require('lodash');
 
@@ -8,8 +9,12 @@ var db = require('../../db');
 var Story = require('../stories/story.model');
 
 var User = new mongoose.Schema({
-	firstName: String,
-	lastName: String,
+	_id: {
+		type: String,
+		unique: true,
+		default: shortid.generate
+	},
+	name: String,
 	photo: String,
 	phone: String,
 	email: {
@@ -34,11 +39,6 @@ var User = new mongoose.Schema({
 function generateSalt () {
 	return crypto.randomBytes(16).toString('base64');
 }
-
-User.virtual('name')
-.get(function () {
-	return this.firstName + ' ' + this.lastName;
-});
 
 User.statics.findByEmails = function (set) {
 	return this.find({emails: {$elemMatch: {$in: set}}});

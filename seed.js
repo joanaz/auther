@@ -24,8 +24,7 @@ function randPhoto () {
 
 function randUser () {
 	return new User({
-		firstName: chance.first(),
-		lastName: chance.last(),
+		name: [chance.first(), chance.last()].join(' '),
 		photo: randPhoto(),
 		phone: chance.phone(),
 		email: emails.pop(),

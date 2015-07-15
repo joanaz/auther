@@ -25,7 +25,9 @@ app.factory('Story', function ($http) {
 
 	Story.fetchAll = function () {
 		return $http.get(Story.url).then(function (res) {
-			return res.data;
+			return res.data.map(function (obj) {
+				return new Story(obj);
+			});
 		});
 	};
 

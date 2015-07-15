@@ -3,7 +3,7 @@
 var router = require('express').Router(),
 	_ = require('lodash');
 
-var HttpError = require('../../lib/HttpError');
+var HttpError = require('../../utils/HttpError');
 var Story = require('./story.model');
 
 router.param('id', function (req, res, next, id) {
@@ -19,7 +19,7 @@ router.param('id', function (req, res, next, id) {
 });
 
 router.get('/', function (req, res, next) {
-	Story.find({}).exec()
+	Story.find({}).populate('author').exec()
 	.then(function (storys) {
 		res.json(storys);
 	})
@@ -29,7 +29,10 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
 	Story.create(req.body)
 	.then(function (story) {
-		res.status(201).json(story);
+		return story.populateAsync('author');
+	})
+	.then(function (populated) {
+		res.status(201).json(populated);
 	})
 	.then(null, next);
 });

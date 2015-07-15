@@ -3,7 +3,7 @@
 var router = require('express').Router(),
 	_ = require('lodash');
 
-var HttpError = require('../../lib/HttpError');
+var HttpError = require('../../utils/HttpError');
 var User = require('./user.model');
 
 router.param('id', function (req, res, next, id) {

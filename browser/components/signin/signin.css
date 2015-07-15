@@ -1,0 +1,23 @@
+signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: -webkit-min-content; }
+  signin > * {
+    width: 33%; }
+  signin .local {
+    max-width: 18em;
+    text-align: left; }
+  signin .or {
+    max-width: 10em; }
+  signin .oauth {
+    max-width: 18em; }
+  signin .btn-social {
+    text-align: center;
+    width: 100%; }
+
+@media (max-width: 600px) {
+  signin {
+    flex-direction: column; }
+    signin > * {
+      width: 100%; } }
