@@ -1,4 +1,4 @@
-signin {
+.signin-container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -23,7 +23,7 @@ signin {
 }
 
 @media (max-width: 600px) {
-	signin {
+	.signin-container {
 		flex-direction: column;
 		> * {
 			width: 100%;

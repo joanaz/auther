@@ -1,23 +1,23 @@
-signin {
+.signin-container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: -webkit-min-content; }
-  signin > * {
+  .signin-container > * {
     width: 33%; }
-  signin .local {
+  .signin-container .local {
     max-width: 18em;
     text-align: left; }
-  signin .or {
+  .signin-container .or {
     max-width: 10em; }
-  signin .oauth {
+  .signin-container .oauth {
     max-width: 18em; }
-  signin .btn-social {
+  .signin-container .btn-social {
     text-align: center;
     width: 100%; }
 
 @media (max-width: 600px) {
-  signin {
+  .signin-container {
     flex-direction: column; }
-    signin > * {
+    .signin-container > * {
       width: 100%; } }
