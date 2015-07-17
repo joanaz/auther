@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('UserDetailCtrl', function ($scope, user, Story) {
+app.controller('UserDetailCtrl', function ($scope, user, Story, Auth) {
 	$scope.user = user;
 	$scope.newStory = new Story({author: $scope.user});
 	$scope.addStory = function () {
@@ -18,4 +18,6 @@ app.controller('UserDetailCtrl', function ($scope, user, Story) {
 			$scope.user.stories.splice(idx, 1);
 		});
 	};
+
+	$scope.currentUser = Auth.getUserId();
 });

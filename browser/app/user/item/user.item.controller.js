@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('UserItemCtrl', function ($scope, $state) {
+app.controller('UserItemCtrl', function ($scope, $state, Auth) {
 	$scope.save = function () {
 		$scope.user.save();
 	}
@@ -9,4 +9,6 @@ app.controller('UserItemCtrl', function ($scope, $state) {
 			$scope.user.isDestroyed = true;
 		});
 	};
+
+	$scope.currentUser = Auth.getUserId();
 });

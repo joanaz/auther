@@ -8,7 +8,7 @@
 			<p class="list-group-item">
 				<span>
 					<span contenteditable placeholder="Story Title" class="form-like" ng-model="newStory.title"></span>
-					<button class="btn btn-warning pull-right btn-xs" ng-click="addStory()">
+					<button ng-show="currentUser" class="btn btn-warning pull-right btn-xs" ng-click="addStory()">
 						<span class="glyphicon glyphicon-plus"></span>
 					</button>
 				</span>
@@ -18,7 +18,7 @@
 					<a ui-sref="story({id: story._id})" class="clickable story-item-title">
 						{{ story.title }}
 					</a>
-					<button class="btn btn-default pull-right btn-xs remove-story" ng-click="removeStory(story)">
+					<button ng-show="currentUser" class="btn btn-default pull-right btn-xs remove-story" ng-click="removeStory(story)">
 						<span class="glyphicon glyphicon-remove"></span>
 					</button>
 				</span>

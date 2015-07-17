@@ -11,7 +11,10 @@ app.config(function ($stateProvider) {
 			},
 			users: function (User) {
 				return User.fetchAll();
-			}
+			},
+			// user: function(Auth) {
+			// 	return Auth.getUser();
+			// }
 		}
 	});
 });

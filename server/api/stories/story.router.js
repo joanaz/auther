@@ -6,6 +6,8 @@ var router = require('express').Router(),
 var HttpError = require('../../utils/HttpError');
 var Story = require('./story.model');
 
+var auth = require('../auth.js');
+
 router.param('id', function (req, res, next, id) {
 	Story.findById(id).exec()
 	.then(function (story) {
@@ -26,6 +28,8 @@ router.get('/', function (req, res, next) {
 	.then(null, next);
 });
 
+router.post('/', auth.isAuthenticated);
+
 router.post('/', function (req, res, next) {
 	Story.create(req.body)
 	.then(function (story) {
@@ -45,6 +49,8 @@ router.get('/:id', function (req, res, next) {
 	.then(null, next);
 });
 
+router.put('/:id', auth.isAuthenticated);
+
 router.put('/:id', function (req, res, next) {
 	_.extend(req.story, req.body);
 	req.story.save()
@@ -53,6 +59,8 @@ router.put('/:id', function (req, res, next) {
 	})
 	.then(null, next);
 });
+
+router.delete('/:id', auth.isAuthenticated);
 
 router.delete('/:id', function (req, res, next) {
 	req.story.remove()

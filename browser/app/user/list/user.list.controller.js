@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('UserListCtrl', function ($scope, users, User) {
+app.controller('UserListCtrl', function ($scope, users, User, Auth) {
 	$scope.users = users;
 	$scope.addUser = function () {
 		var n = Math.floor(Math.random()*96),
@@ -17,4 +17,9 @@ app.controller('UserListCtrl', function ($scope, users, User) {
 	$scope.userSearch = new User();
 
 	$scope.userAdd = new User();
+
+	$scope.currentUser = Auth.getUser();
+
+	// if ($scope.curr)
+
 });

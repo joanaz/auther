@@ -5,7 +5,7 @@
 			<p>by <span contenteditable ng-model="searchStory.author.name" placeholder="Jean Doe" class="form-like"></span></p>
 		</span>
 		<span class="glyphicon glyphicon-search"></span>
-	</div>
+	</div>	
 	<br><br>
 	<ul class="list-group">
 		<li class="list-group-item story-item">
@@ -15,7 +15,7 @@
 					<option value='' disabled>(select an author)</option>
 				</select></p>
 			</span>
-			<button class="btn btn-warning pull-right btn-xs" ng-click="addStory()">
+			<button ng-show="currentUser" class="btn btn-warning pull-right btn-xs" ng-click="addStory()">
 				<span class="glyphicon glyphicon-plus"></span>
 			</button>
 		</li>
@@ -24,7 +24,7 @@
 				<h4><a ui-sref="story({id: story._id})">{{ story.title }}</a></h4>
 				<p>by <a ui-sref="user({id: story.author._id})">{{ story.author.name }}</a></p>
 			</span>
-			<button class="btn btn-default pull-right btn-xs remove-story" ng-click="removeStory(story)">
+			<button ng-show="currentUser" class="btn btn-default pull-right btn-xs remove-story" ng-click="removeStory(story)">
 				<span class="glyphicon glyphicon-remove"></span>
 			</button>
 		</li>

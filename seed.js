@@ -28,7 +28,8 @@ function randUser () {
 		photo: randPhoto(),
 		phone: chance.phone(),
 		email: emails.pop(),
-		password: chance.word()
+		password: chance.word(),
+		isAdmin: chance.bool({likelihood: 40})
 	});
 }
 

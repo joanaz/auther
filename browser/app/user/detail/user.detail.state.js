@@ -9,7 +9,13 @@ app.config(function ($stateProvider) {
 			user: function (User, $stateParams) {
 				var user = new User({_id: $stateParams.id});
 				return user.fetch();
-			}
+			},
+			// currentUser: function(Auth) {
+			// 	return Auth.getUser();
+			// }
+		},
+		access: function(user) {
+			return user.isAdmin;
 		}
 	});
 });

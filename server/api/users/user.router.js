@@ -6,6 +6,8 @@ var router = require('express').Router(),
 var HttpError = require('../../utils/HttpError');
 var User = require('./user.model');
 
+var auth = require('../auth.js');
+
 router.param('id', function (req, res, next, id) {
 	User.findById(id).exec()
 	.then(function (user) {
@@ -26,12 +28,39 @@ router.get('/', function (req, res, next) {
 	.then(null, next);
 });
 
+// router.post('/', auth.isAuthenticated);
+
 router.post('/', function (req, res, next) {
 	User.create(req.body)
 	.then(function (user) {
 		res.status(201).json(user);
 	})
 	.then(null, next);
+});
+
+router.get('/me', function(req, res, next) {
+
+	console.log('ran me');
+
+	// return logged in user
+	// if on req.user
+	if (req.user) {
+		res.json(req.user);
+	}
+	// if logged in
+	else if (req.session.userId) {
+		User.findById(req.session.userId).exec()
+		.then(function(user) {
+			res.json(user);
+		})
+		.then(null, next);
+	}
+	// can't find user otherwise 
+	else {
+		var err = new Error('Unauthorized');
+		err.status = 401;
+		next(err);
+	}
 });
 
 router.get('/:id', function (req, res, next) {
@@ -43,6 +72,8 @@ router.get('/:id', function (req, res, next) {
 	.then(null, next);
 });
 
+router.put('/:id', auth.isAuthenticated);
+
 router.put('/:id', function (req, res, next) {
 	console.log('req.body', req.body);
 	_.extend(req.requestedUser, req.body);
@@ -53,6 +84,9 @@ router.put('/:id', function (req, res, next) {
 	.then(null, next);
 });
 
+router.delete('/:id', auth.isAuthenticated);
+router.delete('/:id', auth.isAdmin);
+
 router.delete('/:id', function (req, res, next) {
 	req.requestedUser.remove()
 	.then(function () {
@@ -60,5 +94,6 @@ router.delete('/:id', function (req, res, next) {
 	})
 	.then(null, next);
 });
+
 
 module.exports = router;

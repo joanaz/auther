@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('StoryDetailCtrl', function ($scope, story, users) {
+app.controller('StoryDetailCtrl', function ($scope, story, users, Auth) {
 	$scope.story = story;
 	var toSave = angular.copy($scope.story);
 	$scope.selected = story.author;
@@ -28,4 +28,7 @@ app.controller('StoryDetailCtrl', function ($scope, story, users) {
 	function save () {
 		toSave.save();
 	}
+
+	$scope.currentUser = Auth.getUserId();
+
 });

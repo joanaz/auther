@@ -14,11 +14,11 @@
 		</p>
 		<h5>
 			<div ng-if="isForm" contenteditable placeholder="(555) 555-5555" ng-model="user.phone" class="form-like"></div>
-			<span ng-if="!isForm" contenteditable ng-model="user.phone" ng-change="save()" eat-click></span>
+			<span ng-if="!isForm" contenteditable ng-model="user.phone" ng-change="currentUser && save()" eat-click></span>
 		</h5>
 	</div>
 	<div class="media-right media-middle">
-		<button ng-if="!isForm" class="btn btn-default" ng-click="removeUser()" eat-click>
+		<button ng-show="currentUser" ng-if="!isForm" class="btn btn-default" ng-click="removeUser()" eat-click>
 			<span class="glyphicon glyphicon-remove"></span>
 		</button>
 	</div>
